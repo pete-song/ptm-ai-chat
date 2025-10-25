@@ -6,8 +6,7 @@ export async function POST(request: NextRequest) {
   try {
     const { message, conversationHistory } = await request.json();
 
-    // Use the provided API key or fallback to the hardcoded one
-    const apiKey = process.env.GOOGLE_AI_API_KEY || "AIzaSyAg0OlN9GcySioP-tApcRPF8U6lgINud6I";
+    const apiKey = process.env.GOOGLE_AI_API_KEY;
     
     if (!apiKey) {
       return NextResponse.json(
@@ -16,7 +15,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Load Excel data for context
     let excelContext = "";
     try {
       const excelData = await loadExcelData();
@@ -34,11 +32,9 @@ When users ask questions about data, products, or information that might be in t
 
 Be helpful, concise, and professional in your responses.`;
 
-    // Get the Gemini model
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-    // Build the conversation history for Gemini
     const conversationText = conversationHistory 
       ? conversationHistory.map((msg: any) => `${msg.role}: ${msg.content}`).join('\n') + '\n'
       : '';
