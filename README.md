@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PTM AI Chat
+
+A modern AI chatbot application built with Next.js, shadcn/ui, and OpenAI integration. Features a ChatGPT-like interface with conversation management, real-time messaging, and responsive design.
+
+## Features
+
+- 🎨 **Modern UI**: Built with shadcn/ui components and Tailwind CSS
+- 💬 **Chat Interface**: ChatGPT-like messaging experience
+- 📱 **Responsive Design**: Works on desktop and mobile devices
+- 🔄 **Conversation Management**: Create, switch between, and delete conversations
+- ⚡ **Real-time Updates**: Live typing indicators and message updates
+- 🤖 **AI Integration**: Ready for OpenAI API integration
+- 📊 **Data Support**: Prepared for Excel file processing (P5.xlsx)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+ 
+- npm or yarn
+- OpenAI API key (optional for initial setup)
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory and add:
+   ```env
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## OpenAI API Setup
+
+To enable actual AI functionality:
+
+1. Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Add it to your `.env.local` file:
+   ```env
+   OPENAI_API_KEY=sk-your-actual-api-key-here
+   ```
+3. Uncomment the OpenAI integration code in `app/api/chat/route.ts`
+4. Restart the development server
+
+## Project Structure
+
+```
+├── app/
+│   ├── api/chat/          # API routes for chat functionality
+│   ├── globals.css         # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Main page
+├── components/
+│   ├── ui/                # shadcn/ui components
+│   ├── chat-interface.tsx # Main chat interface
+│   ├── chat-input.tsx     # Message input component
+│   ├── chat-message.tsx   # Individual message component
+│   ├── sidebar.tsx        # Conversation sidebar
+│   └── typing-indicator.tsx # Loading animation
+├── lib/
+│   └── utils.ts           # Utility functions
+└── public/
+    └── data/
+        └── P5.xlsx        # Sample Excel file for data processing
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Available Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Technologies Used
 
-## Learn More
+- **Next.js 16** - React framework
+- **shadcn/ui** - UI component library
+- **Tailwind CSS** - Styling
+- **TypeScript** - Type safety
+- **OpenAI API** - AI integration
+- **xlsx** - Excel file processing
+- **Lucide React** - Icons
 
-To learn more about Next.js, take a look at the following resources:
+## Features in Detail
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Chat Interface
+- Clean, modern design similar to ChatGPT
+- Message bubbles with timestamps
+- User and AI message differentiation
+- Auto-scroll to latest messages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Sidebar
+- Conversation history
+- New chat creation
+- Conversation switching
+- Delete conversations
+- Mobile-responsive with toggle
 
-## Deploy on Vercel
+### Input Area
+- Multi-line text input
+- Send button with loading state
+- Keyboard shortcuts (Enter to send, Shift+Enter for new line)
+- Character limit handling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Future Enhancements
+- File upload support
+- Excel data integration
+- Message search
+- Export conversations
+- Custom AI models
+- Voice input/output
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
